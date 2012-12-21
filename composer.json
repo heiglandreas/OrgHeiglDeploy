@@ -23,6 +23,6 @@
         "classmap": [
             "./"
         ]
-    }
+    },
     "minimum-stability": "dev"
 }
