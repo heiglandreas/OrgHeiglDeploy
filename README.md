@@ -2,6 +2,8 @@
 
 ## Deployment-Module for ZF2
 
+[![Build Status](https://secure.travis-ci.org/heiglandreas/OrgHeiglDeploy.png?branch=master)](http://travis-ci.org/heiglandreas/OrgHeiglDeploy)
+
 ### Purpose
 
 This module helps you deploying a ZendFramework2-Application in a hosting

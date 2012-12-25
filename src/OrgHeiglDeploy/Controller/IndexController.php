@@ -249,18 +249,6 @@ class IndexController extends AbstractActionController
         throw new \InvalidArgumentException('The given ZIP-File could not be opened');
         }
         $zip->extractTo($this->getConfig('target'));
-//        for ($i = 0; $i < $zip->numFiles; $i++) {
-//            $name = $zip->getNameIndex($i);
-//            $name = $this->getConfig('target') . DIRECTORY_SEPARATOR . $name;
-//            $data = $zip->getFromIndex($i);
-//            if (false === $data) {
-//                continue;
-//            }
-//            if (!file_exists(dirname($name))) {
-//                mkdir(dirname($name), 777, true);
-//            }
-//            file_put_contents($name, $data);
-//        }
         $zip->close();
         return $this;
     }
