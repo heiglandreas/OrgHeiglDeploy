@@ -248,18 +248,20 @@ class IndexController extends AbstractActionController
         if (true !== $zip->open($this->getTempFile(), ZIPARCHIVE::CREATE)) {
         throw new \InvalidArgumentException('The given ZIP-File could not be opened');
         }
-        for ($i = 0; $i < $zip->numFiles; $i++) {
-            $name = $zip->getNameIndex($i);
-            $name = $this->getConfig('target') . DIRECTORY_SEPARATOR . $name;
-            $data = $zip->getFromIndex($i);
-            if (false == $data) {
-                continue;
-            }
-            if (!file_exists(dirname($name))) {
-                mkdir(dirname($name), 777, true);
-            }
-            file_put_contents($name, $data);
-        }
+        $zip->extractTo($this->getConfig('target'));
+//        for ($i = 0; $i < $zip->numFiles; $i++) {
+//            $name = $zip->getNameIndex($i);
+//            $name = $this->getConfig('target') . DIRECTORY_SEPARATOR . $name;
+//            $data = $zip->getFromIndex($i);
+//            if (false === $data) {
+//                continue;
+//            }
+//            if (!file_exists(dirname($name))) {
+//                mkdir(dirname($name), 777, true);
+//            }
+//            file_put_contents($name, $data);
+//        }
+        $zip->close();
         return $this;
     }
 

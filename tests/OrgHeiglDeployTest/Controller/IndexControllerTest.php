@@ -169,6 +169,16 @@ class IndexControllerTest extends PHPUnit_Framework_TestCase
         $this->assertSame(file_get_contents($tempFile), file_get_contents(__DIR__ . '/../../share/test.zip'));
     }
 
+    public function testExtractingZip()
+    {
+        $reflection = new \ReflectionProperty($this->controller, 'tempFile');
+        $reflection->setAccessible(true);
+        $reflection->setValue($this->controller, __DIR__ . '/../../share/test.zip');
+        $deployZipFile = Bootstrap::getMethod($this->controller, 'deployZipFile');
+        $deployZipFile->invoke($this->controller);
+        $this->assertTrue(file_Exists(__DIR__ . '/../../../test1'));
+    }
+
     public function testHashChecking()
     {
         $this->routeMatch->setParam('hash', 'EA3459C3-8839-4F00-9423-77CDA2A386D6');
@@ -186,13 +196,18 @@ class IndexControllerTest extends PHPUnit_Framework_TestCase
         $response = $this->controller->getResponse();
 
         $this->assertEquals(200, $response->getStatusCode());
+        $this->assertTrue(file_Exists(__DIR__ . '/../../../test1'));
 
         $this->cleanupTempFiles();
     }
 
     public function cleanupTempFiles()
     {
-        unlink(__DIR__ . '/../../../test1');
-        unlink(__DIR__ . '/../../../test2');
+        if (file_exists(__DIR__ . '/../../../test1')) {
+            unlink(__DIR__ . '/../../../test1');
+        }
+        if (file_exists(__DIR__ . '/../../../test2')) {
+            unlink(__DIR__ . '/../../../test2');
+        }
     }
 }
