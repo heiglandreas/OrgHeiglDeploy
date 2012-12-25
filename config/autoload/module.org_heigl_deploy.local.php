@@ -49,7 +49,7 @@ return array('OrgHeiglDeploy' => array(
     'source' => 'https://nodeload.github.com/heiglandreas/OrgHeiglDeploy/zip/master',
 
     // The location where the files shall be deployed to
-    'target' => realpath(__DIR__ . '../../'),
+    'target' => realpath(__DIR__ . '/../../'),
 
     // Which script shall be triggered as pre-deployment-script? This has to be
     // a php-script

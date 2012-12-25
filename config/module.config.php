@@ -31,7 +31,7 @@
 return array(
 	'router' => array(
 		'routes' => array(
-        	'mailproxy' => array(
+        	'deploy' => array(
             	'type' => 'Segment',
                 'options' => array(
                 	'route' => '/deploy/:hash',
