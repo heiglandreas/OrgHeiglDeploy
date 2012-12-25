@@ -46,7 +46,10 @@ return array('OrgHeiglDeploy' => array(
     // As this module will be used on environments you can not control we do
     // not have any access to a VCS, therefore we have to download a zip-file
     // and extract that.
-    'source' => 'http://github.com/heiglandreas/OrgHeiglDeploy/',
+    'source' => 'file://' . __DIR__ . '/../../tests/share/test.zip',
+
+    // The location where the files shall be deployed to
+    'target' => realpath(__DIR__ . '/../../'),
     
     // Which script shall be triggered as pre-deployment-script? This has to be
     // a php-script

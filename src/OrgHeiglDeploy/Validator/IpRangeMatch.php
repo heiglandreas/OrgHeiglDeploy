@@ -97,7 +97,7 @@ class IpRangeMatch extends AbstractValidator
     
     private function judge_ip_type($ip)
     {
-        if (strpos($ip, ':')) {
+        if (false !== strpos($ip, ':')) {
             return self::$IP_TYPE_V6;
         }
         

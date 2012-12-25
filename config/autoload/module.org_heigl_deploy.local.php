@@ -28,54 +28,34 @@
  * @since     18.12.2012
  * @link      http://github.com/heiglandreas/OrgHeiglDeploy
  */
+return array('OrgHeiglDeploy' => array(
+	// This denotes the security hash that has to be append to the URL to
+	// trigger a deployment.
+	'hash' => 'EA3459C3-8839-4F00-9423-77CDA2A386D6',
+	
+	// A List of IP-Addresses and/or IP-Ranges that are allowed to trigger
+	// the deployment script. All calls from addresses outside the set ones
+	// will simply return a 404 error
+	'ip' => array(
+	         '127.0.0.1',
+	         '::1',
+	         '192.168.1.1/24'
+            ),
+    
+    // The location of the ZIP-file your project can be downloaded at.
+    // As this module will be used on environments you can not control we do
+    // not have any access to a VCS, therefore we have to download a zip-file
+    // and extract that.
+    'source' => 'https://nodeload.github.com/heiglandreas/OrgHeiglDeploy/zip/master',
 
-namespace OrgHeiglDeploy;
+    // The location where the files shall be deployed to
+    'target' => realpath(__DIR__ . '../../'),
 
-use Zend\ModuleManager\ModuleManager;
-use Zend\EventManager\StaticEventManager;
-use Zend\Mvc\ModuleRouteListener;
+    // Which script shall be triggered as pre-deployment-script? This has to be
+    // a php-script
+    'predeployment' => 'tools/predeployment.php',
     
-
-/**
- * The Module-Provider
- *
- * @category  Deploy
- * @author    Andreas Heigl<andreas@heigl.org>
- * @copyright 2011-2012 Andreas Heigl
- * @license   http://www.opesource.org/licenses/mit-license.php MIT-License
- * @version   0.0
- * @since     18.12.2012
- * @link      http://github.com/heiglandreas/OrgHeiglDeploy
- */
-class Module
-{
-    public function init(ModuleManager $moduleManager)
-    {
-//        $events = StaticEventManager::getInstance();
-//        $events->attach('bootstrap', 'bootstrap', array($this, 'initializeView'), 100);
-    }
-    
-    public function onBootstrap($e)
-    {
-    	$e->getApplication()->getServiceManager()->get('translator');
-    	$eventManager        = $e->getApplication()->getEventManager();
-    	$moduleRouteListener = new ModuleRouteListener();
-    	$moduleRouteListener->attach($eventManager);
-    }
-    
-    public function getConfig()
-    {
-    	return include __DIR__ . '/config/module.config.php';
-    }
-    
-    public function getAutoloaderConfig()
-    {
-    	return array(
-    			'Zend\Loader\StandardAutoloader' => array(
-    					'namespaces' => array(
-    							__NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-    					),
-    			),
-    	);
-    }
-}
+    // Which script shall be triggered as post-deployment-script? This has to be
+    // a php-script
+    'postdeployment' => 'tools/postdeployment.sh',
+));
