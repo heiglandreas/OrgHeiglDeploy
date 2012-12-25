@@ -51,13 +51,12 @@ class Module
 {
     public function init(ModuleManager $moduleManager)
     {
-//        $events = StaticEventManager::getInstance();
-//        $events->attach('bootstrap', 'bootstrap', array($this, 'initializeView'), 100);
+        $events = StaticEventManager::getInstance();
+        $events->attach('bootstrap', 'bootstrap', array($this, 'onBootstrap'), 100);
     }
     
     public function onBootstrap($e)
     {
-    	$e->getApplication()->getServiceManager()->get('translator');
     	$eventManager        = $e->getApplication()->getEventManager();
     	$moduleRouteListener = new ModuleRouteListener();
     	$moduleRouteListener->attach($eventManager);

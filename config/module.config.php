@@ -36,12 +36,18 @@ return array(
                 'options' => array(
                 	'route' => '/deploy/:hash',
                     'defaults' => array(
-                    	'controller' => 'OrgHeiglDeploy\Controller\IndexController',
+                        '__NAMESPACE__' => 'OrgHeiglDeploy\Controller',
+                    	'controller' => 'IndexController',
                         'action'     => 'index',
                     ),
                 ),
                 'may_terminate' => true,
             ),
+        ),
+    ),
+    'controllers' => array(
+        'invokables' => array(
+            'OrgHeiglDeploy\Controller\IndexController' => 'OrgHeiglDeploy\Controller\IndexController',
         ),
     ),
     'view_manager' => array(
