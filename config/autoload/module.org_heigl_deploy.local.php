@@ -48,6 +48,10 @@ return array('OrgHeiglDeploy' => array(
     // and extract that.
     'source' => 'https://nodeload.github.com/heiglandreas/OrgHeiglDeploy/zip/master',
 
+    // The base-directory of the ZIP-File every file is located in
+    // For GitHub-files this is 'RepoName-branch'
+    'zipBaseDir' => 'OrgHeiglDeploy-master',
+
     // The location where the files shall be deployed to
     'target' => realpath(__DIR__ . '/../../'),
 

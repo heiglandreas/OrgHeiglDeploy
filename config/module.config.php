@@ -37,8 +37,8 @@ return array(
                 	'route' => '/deploy/:hash',
                     'defaults' => array(
                         '__NAMESPACE__' => 'OrgHeiglDeploy\Controller',
-                    	'controller' => 'IndexController',
-                        'action'     => 'index',
+                    	'controller'    => 'IndexController',
+                        'action'        => 'index',
                     ),
                 ),
                 'may_terminate' => true,

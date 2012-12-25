@@ -48,9 +48,13 @@ return array('OrgHeiglDeploy' => array(
     // and extract that.
     'source' => 'file://' . __DIR__ . '/../../tests/share/test.zip',
 
+    // The base-directory of the ZIP-File every file is located in
+    // For GitHub-files this is 'RepoName-branch'
+    'zipBaseDir' => '/',
+
     // The location where the files shall be deployed to
     'target' => realpath(__DIR__ . '/../../'),
-    
+
     // Which script shall be triggered as pre-deployment-script? This has to be
     // a php-script
     'predeployment' => 'tools/predeployment.php',
