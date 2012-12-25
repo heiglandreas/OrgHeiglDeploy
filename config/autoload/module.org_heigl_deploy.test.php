@@ -50,7 +50,7 @@ return array('OrgHeiglDeploy' => array(
 
     // The base-directory of the ZIP-File every file is located in
     // For GitHub-files this is 'RepoName-branch'
-    'zipBaseDir' => '/',
+    'zipBaseDir' => '',
 
     // The location where the files shall be deployed to
     'target' => realpath(__DIR__ . '/../../'),
