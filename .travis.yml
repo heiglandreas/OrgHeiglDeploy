@@ -9,3 +9,7 @@ before_install:
 
 script:
  - phpunit
+
+notifications: 
+  email:
+    - andreas@heigl.org
