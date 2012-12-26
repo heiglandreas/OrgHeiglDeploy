@@ -255,7 +255,6 @@ class IndexController extends AbstractActionController
         for ($i = 0; $i < $zip->numFiles; $i++) {
             $entry = $zip->getNameIndex($i);
             if ('/' == substr( $entry, -1 )) {
-                echo "\n" . $entry . "\n";
                 continue;
             }
 
@@ -264,11 +263,9 @@ class IndexController extends AbstractActionController
                 mkdir(dirname($newFile), 0777, true);
             }
             $fp = $zip->getStream($entry);
-            echo "\n$newFile\n";
             $ofp = fopen($newFile, 'w' );
 
             if (! $fp) {
-                echo "\ncould not be extracted\n";
                 continue;
             }
             while (! feof( $fp )) {
