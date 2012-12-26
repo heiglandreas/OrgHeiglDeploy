@@ -263,11 +263,11 @@ class IndexController extends AbstractActionController
                 mkdir(dirname($newFile), 0777, true);
             }
             $fp = $zip->getStream($entry);
-            echo "\n$newFile\n"
+            echo "\n$newFile\n";
             $ofp = fopen($newFile, 'w' );
 
             if (! $fp) {
-                echo "\ncould not be extracted\n"
+                echo "\ncould not be extracted\n";
                 continue;
             }
             while (! feof( $fp )) {
