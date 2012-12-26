@@ -8,7 +8,7 @@ before_install:
  - composer install
 
 script:
- - phpunit
+ - phpunit --coverage-text
 
 notifications: 
   email:
