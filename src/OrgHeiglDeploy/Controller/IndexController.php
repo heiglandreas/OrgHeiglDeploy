@@ -250,6 +250,7 @@ class IndexController extends AbstractActionController
         }
 
         $baseDir = $this->getConfig('zipBaseDir');
+        $target  = realpath($this->getConfig('target'));
 
         for ($i = 0; $i < $zip->numFiles; $i++) {
             $entry = $zip->getNameIndex($i);
@@ -258,7 +259,7 @@ class IndexController extends AbstractActionController
                 continue;
             }
 
-            $newFile = './' . str_Replace($baseDir,'', $entry);
+            $newFile = $target . '/' . str_Replace($baseDir,'', $entry);
             if (! is_dir(dirname($newFile))) {
                 mkdir(dirname($newFile), 0777, true);
             }
